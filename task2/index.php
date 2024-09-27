@@ -49,7 +49,8 @@
             $arrayNumeros[$elemento] = $numero % 2; 
         }
 
-        print_r($arrayNumeros);
+        $resultadoArrayNumerosString = implode(", ", $arrayNumeros);
+        print_r($resultadoArrayNumerosString);
 
         ?>
         <h1><b>Array</b></h1>
@@ -97,7 +98,8 @@
             array_push($nuevoArray, $nombres);
         }
 
-        print_r($nuevoArray);
+        $resultadoArrayString = implode(", ", $nuevoArray);
+        echo $resultadoArrayString;
 
         ?>
 
@@ -120,7 +122,8 @@
             return $arrayReves;
         }
 
-        print_r(arrayReves($arrayString));
+        $resultadoFlechaString = implode(", ", arrayReves($arrayString));
+        echo $resultadoFlechaString;
 
         ?>
 
@@ -132,7 +135,9 @@
 
         $resultadoFlecha = $arrayRevesFlecha($arrayString);
 
-        print_r($resultadoFlecha);
+        $resultadoFlechaString = implode(", ", $resultadoFlecha);
+
+        echo $resultadoFlechaString;
 
         ?>
 
@@ -143,9 +148,78 @@
 
         //5) Dado el array de nombres, poner cada nombre en mayúsculas y al revés
 
+        $arrayMayus = [];
 
-    ?>
+        for($i = count($arrayString) -1; $i>=0; $i--){
+            $nombres = strtoupper($arrayString[$i]);
 
+            array_push($arrayMayus, $nombres);
 
+        }
+        $arrayMayusString = implode(", ", $arrayMayus);
+        echo $arrayMayusString;
+        ?>
+
+        <h2>Ejercicio 1</h2>
+
+        <?php
+
+        /*
+        1)Crea un array de números de 100 posiciones, que contendrá los números del 1 al 100.
+        Partiendo del array ya creado y completamente relleno, obtener la suma de todos ellos 
+        y la media.   
+        */
+
+        $arrayNum = [];
+        for($i =0; $i<=100; $i++){
+            array_push($arrayNum, $i);
+        }
+
+        ?>
+
+        <h3>Suma</h3>
+
+        <?php
+        $map = array_sum($arrayNum);
+
+        echo $map;
+
+        ?>
+
+        <h2>Ejercicio 2</h2>
+
+        <?php
+
+        /*
+        2)Crear un array de enteros donde indicamos por teclado el tamaño del array, 
+        rellenamos el array con números aleatorios entre 0 y 9, 
+        y mostramos por pantalla el valor de cada posición y la suma de todos los valores.
+        */
+
+        ?>
+
+        <form action="" method="GET">
+            <div class="form-group">
+                <label for="tamano">Tamaño</label>
+                <input type="number" id="tamano" name="tamano" placeholder="Indica el tamaño del array">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+
+        <?php
+
+        $arrayNumber = [];
+
+        if(isset($_GET["tamano"])){
+            $tamanoNumber = intval($_GET["tamano"]);
+
+            for($i = 0; i<= count($tamanoNumber); $i++){
+
+                array_push($arrayNumber, rand(0,9));
+            }
+
+        }
+
+        ?>
 </body>
 </html>

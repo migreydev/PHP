@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label for="height">Altura</label>
-                <input type="number" id="height" name="height" class="form-control" placeholder="Indica tu altura" required>
+                <input type="double" id="height" name="height" class="form-control" placeholder="Indica tu altura" required>
             </div>
             <div class="form-group">
                 <label for="asignature">Asignaturas</label>
