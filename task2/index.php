@@ -690,5 +690,117 @@
         <h1>Otros</h1>
         <h2>Ejercicio 1</h2>
 
+        <?php
+
+        //1) Dado un array de números, verifica si hay algún número negativo
+
+
+        $arrayNumerosOtros= [10, -5, 7, 3, -1];
+
+        foreach ($arrayNumerosOtros as $numero) {
+
+            if($numero < 0){
+                echo "$numero es un número negativo, ";
+            }
+        }
+
+        ?>
+
+        <h2>Ejercicio 2</h2>
+
+        <?php
+        //2) Dado un array de Strings, encuentra el índice del primer String que empiece por la letra 'A'
+
+        $arrayStrings = ["manzana", "plátano", "cereza", "aguacate", "kiwi", "higo"];
+
+        foreach ($arrayStrings as $index => $fruta) {
+            if ($fruta[0] === 'a' || $fruta[0] === 'A') {
+                echo "El índice del primer String que empieza por la letra 'A' es: $index";
+                break; // Salimos del bucle después de encontrar la primera coincidencia
+            }
+        }
+
+        ?>
+
+        <h2>Ejercicio 3</h2>
+
+        <?php
+        //3) Dado un array de números de 3 o más cifras, calcula la suma de las últimas cifras de cada número
+
+        
+
+        ?>
+
+        <h2>Ejercicio 4</h2>
+
+        <?php
+        //4) Dado un array de arrays, filtra el array para que sólo queden los arrays de longitud 5
+
+
+        $arrayDeArrays = [
+            ["manzana", "plátano", "cereza"],
+            ["aguacate", "kiwi", "higo"],
+            ["naranja", "pera", "melón", "fresa", "platano"]
+        ];
+        $hayArrayLongitud5 = false;
+
+        foreach($arrayDeArrays as $array){
+
+            if(count($array) === 5){
+                $hayArrayLongitud5 = true;
+                echo "Array de longitud 5: ". implode(",", $array);
+            }
+        }
+
+        if(!$hayArrayLongitud5){
+            echo "No hay arrays de longitud 5";
+        }
+
+        ?>
+
+        <h2>Ejercicio 5</h2>
+
+        <?php
+        //5) Dado un array de Strings, encuentra el primer string de longitud 3
+
+        $arrayStringsFruta = ["manzana", "plátano", "cereza", "uva", "kiwi","higo"];
+        $encontrado = false;
+
+        foreach($arrayStringsFruta as $fruta){
+            $length = strlen($fruta);
+
+            if($length === 3){
+                echo "El primer string de longitud 3 es $fruta";
+                $encontrado = true;
+                break;
+            }
+        }
+
+        if (!$encontrado) {
+            echo "No hay string de longitud 3";
+        }
+        
+
+        ?>
+
+        <h2>Ejercicio 6</h2>
+
+        <?php
+        //6) Dado un array de números, verifica que todos los números sean de 2 cifras o más
+
+        $arrayNumeros = [3, 12, 7, 25, 8, 19];
+
+        foreach($arrayNumeros as $numero){
+
+            if($numero >= 10){
+                echo "Todos los numeros son de 2 o mas cifras";
+            }else {
+                echo "Todos los numeros no son de 2 o mas cifras";
+                break;
+            }
+        }
+
+        ?>
+
 </body>
 </html>
