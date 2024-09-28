@@ -209,16 +209,142 @@
         <?php
 
         $arrayNumber = [];
+        $sumaValores = 0;
 
         if(isset($_GET["tamano"])){
             $tamanoNumber = intval($_GET["tamano"]);
 
-            for($i = 0; i<= count($tamanoNumber); $i++){
-
+            for($i = 0; $i<$tamanoNumber; $i++){
                 array_push($arrayNumber, rand(0,9));
             }
 
         }
+
+        print_r($arrayNumber);
+
+        for($i = 0; $i< count($arrayNumber); $i++){
+            $sumaValores += $arrayNumber[$i];
+        }
+
+        echo "Suma total del array ".$sumaValores;
+
+        ?>
+
+        <h2>Ejercicio 3</h2>
+
+        <form method="GET">
+            <div class="form-group">
+                <label for="tamano">Tamaño del array:</label>
+                <input type="number" name="tamano" required>
+                <br>
+                <label for="numero">Número entre 0 y 9:</label>
+                <input type="number" name="numero" required>
+                <br>
+                <input type="submit" class="btn btn-primary" value="Generar Array">
+            </div>
+        </form>
+
+        <?php
+
+        /*
+        3)Pedir por formulario  un numero entero y crear un array de ese tamaño, con valores aleatorios entre 1 y 300.
+        A continuación, pedir un número entero entre 0 y 9, e imprimir todas las posiciones del array que tengan un número acabado en ese dígito.
+        Esos números, además de imprimirlos, almacenarlos en un array de salida con el tamaño adecuado.
+        */
+
+        $arrayNumberform = [];
+        $arrayOutput = [];
+
+        if (isset($_GET["tamano"]) && isset($_GET["numero"])) {
+            $tamanoNumber = intval($_GET["tamano"]);
+            $positiveNumber = intval($_GET["numero"]);
+
+            if ($tamanoNumber <= 0) {
+                echo "Debes introducir un tamaño positivo.";
+            }
+
+            if ($positiveNumber < 0 || $positiveNumber > 9) {
+                echo "Debes introducir un número entre 0 y 9.";
+            }
+
+            for ($i = 0; $i < $tamanoNumber; $i++) {
+
+                array_push($arrayNumberform, rand(1, 300));
+            
+            }
+
+            echo "Array generado: " . implode(", ", $arrayNumberform);
+
+            foreach ($arrayNumberform as $index => $value) {
+
+                if($value % 10 === $positiveNumber){
+                    array_push($arrayOutput,$value);
+                }
+            }
+
+            ?>
+
+            <br>
+
+            <?php
+
+            if(empty($arrayOutput)){
+                echo "No se encontraron números acabados en $positiveNumber";
+            }else {
+
+                echo "Números acabados en $positiveNumber : " . implode(", ", $arrayOutput);
+            }
+
+
+        }
+
+        ?>
+
+        <h2>Ejercicio 4</h2>
+
+        <form method="GET">
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="number" name="dni" placeholder="Introduce tu DNI" required>
+                <input type="submit" class="btn btn-primary" value="Calcular Letra">
+            </div>
+        </form>
+
+        <?php
+
+        /*
+        Introduce por un formulario el número de tu DNI, y vuelve a imprimirlo seguido de la letra. 
+        Para calcular la letra, cogeremos el resto de dividir nuestro dni entre 23, el resultado debe estar entre 0 y 22.
+        Tendrás que crear un array que contenga (ver imagen)
+        */
+
+        $letrasDNI = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'];
+        $dniCompleto = "";
+
+        if(isset($_GET["dni"])){
+            $dni = intval($_GET["dni"]);
+
+            if ($dni >= 0 && $dni <= 99999999) {
+
+                $letra = $letrasDNI[$dni%23];
+                $dniCompleto = $dni . $letra;
+                echo "DNI completo: $dniCompleto";  
+
+            }else {
+                echo "Introduce un dni valido, 8 números";
+            }
+
+        }
+
+        ?>
+
+        <h2>Ejercicio 1</h2>
+
+        <?php
+
+        /*
+        1) Define una función que reciba un número n y devuelva si es primo o no
+        */
 
         ?>
 </body>
