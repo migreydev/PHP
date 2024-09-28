@@ -338,6 +338,7 @@
 
         ?>
 
+        <h1>Ejercicio Primos</h1>
         <h2>Ejercicio 1</h2>
 
         <?php
@@ -346,6 +347,348 @@
         1) Define una función que reciba un número n y devuelva si es primo o no
         */
 
+        function isPrimo($n){
+
+            if ($n <= 1) {
+                return false;
+            }
+
+            for ($i = 2; $i < $n; $i++) {
+                if ($n % $i === 0) {
+                    return false;
+                }
+            }
+
+            return  true;
+        }
+
+        $numero = 17;
+
+        if(isPrimo($numero)){
+            echo "El número $numero es primo";
+        }else {
+            echo "El número $numero no es primo";
+        }
+
         ?>
+
+        <br>
+
+        <?php
+        $numero = 15;
+
+        if(isPrimo($numero)){
+            echo "El número $numero es primo";
+        }else {
+            echo "El número $numero no es primo";
+        }
+
+        ?>
+
+        <h2>Ejercicio 2</h2>
+
+        <?php
+
+        /*
+        2) Dado el array [5,1,7,8,2,4,6,3,9], comprueba si hay algún número primo
+        */
+
+        $arrayPrimos = [5,1,7,8,2,4,6,3,9];
+        echo "Array: " . implode(", ", $arrayPrimos);
+
+        foreach($arrayPrimos as $primo){
+            $isPrimo = true; 
+
+            if($primo <= 1){
+                $isPrimo = false;
+            }
+
+            for ($i = 2; $i < $primo; $i++) {
+                if ($primo % $i === 0) {
+                    $isPrimo = false;
+                }
+            }
+
+            ?>
+
+            <br>
+
+            <?php
+
+            if ($isPrimo) {
+                echo "$primo es primo";
+            }
+        }
+
+        ?>
+
+        <h2>Ejercicio 3</h2>
+
+        <?php
+
+        /*
+        3/Dado el array [5,1,7,8,2,4,6,3,9], comprueba si todos son números primos
+        */
+
+        foreach($arrayPrimos as $primo){
+
+            $isPrimo = true; 
+
+            if($primo <= 1){
+                $isPrimo = false;
+                break;
+            }
+
+            for ($i = 2; $i < $primo; $i++) {
+                if ($primo % $i === 0) {
+                    $isPrimo = false;
+                    break;
+                }
+            }
+
+        }
+
+        if($isPrimo){
+            echo "Todos son primos";
+        }else {
+            echo "todos no son primos";
+        }
+
+        ?>
+
+        <h2>Ejercicio 4 y 5</h2>
+
+        <?php
+
+        /*
+
+        4 y 5-Dado el array [5,1,7,8,2,4,6,3,9], comprueba en que posición está el primer número primo
+        */
+
+        for($i = 0; $i < count($arrayPrimos); $i++){
+
+            $isPrimo = true; 
+            $primo = $arrayPrimos[$i];
+
+            if($primo <= 1){
+                $isPrimo = false;
+            }
+
+            for ($j = 2; $j < $primo; $j++) {
+                if ($primo % $j === 0) {
+                    $isPrimo = false;
+                }
+            }
+
+            if($isPrimo){
+                echo "En la posicion $i se encuentra el primer número primo, siendo el número $primo";
+                break;
+            }
+
+        }
+
+        ?>
+
+        <h2>Ejercicio 6</h2>
+
+        <?php
+
+        //6) Dado el array [5,1,7,8,2,4,6,3,9], quédate sólo con los números primos
+
+        $arrayNumPrimos = [];
+
+        for($i = 0; $i < count($arrayPrimos); $i++){
+
+            $isPrimo = true; 
+            $primo = $arrayPrimos[$i];
+
+            if($primo <= 1){
+                $isPrimo = false;
+            }
+
+            for ($j = 2; $j < $primo; $j++) {
+                if ($primo % $j === 0) {
+                    $isPrimo = false;
+                }
+            }
+
+            if($isPrimo){
+                array_push($arrayNumPrimos, $primo);
+            }
+
+        }
+
+        echo "Array de números primos: " . implode(", ", $arrayNumPrimos);
+
+        ?>
+
+        <h2>Ejercicio 7</h2>
+
+        <?php
+
+        //7)  Dado el array de números primos, dame el producto de todos los elementos del array
+
+        $producto = 1;
+
+        foreach( $arrayNumPrimos as $primos){
+
+            $producto *= $primos;
+        }
+
+        echo "El producto total del array de números primos seria $producto";
+
+        ?>
+
+        <h1>Ejercicio Palíndromo</h1>
+        <h2>Ejercicio 1</h2>
+
+        <?php
+
+        //8)  Define una función que reciba un String y devuelva si es palíndromo o no
+
+        function isPalindromo ($string){
+            $length = strlen($string); //devuelve el número de caracteres de la cadena, ya que a través de un string el count no funcionaría
+
+            for($i = 0; $i< $length; $i++){
+                $palindromo = $string[$i];
+
+                for($j = $length -1; $j>=0; $j--){
+                    $palindromoReves = $string[$j];
+        
+                    if($palindromoReves === $palindromo){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            }
+        }
+
+        $palabra = "ana";
+        if(isPalindromo($palabra)){
+            echo "La palabra $palabra es palindromo";
+        }else{
+            echo "La palabra $palabra no es palindromo";
+        }
+
+        ?>
+
+        <h2>Ejercicio 2</h2>
+
+        <?php
+
+        //9) Dado el array ["ana", "mesa", "radar","seres","folio","sudoku","amor a roma", "sol", "mar", "oso", "salas"], comprueba si hay algún palíndromo
+
+        $arrayString = ["ana", "mesa", "radar","seres","folio","sudoku","amor a roma", "sol", "mar", "oso", "salas"];
+
+        foreach ($arrayString as $cadena) {
+            $length = strlen($cadena);
+            $palabraReves = "";
+
+            for ($j = $length - 1; $j >= 0; $j--) {
+                $palabraReves .=  $cadena[$j];
+            }
+            
+            if ($cadena === $palabraReves) { 
+                echo "$cadena es palindromo, "; 
+            }
+        }
+
+        ?>
+
+        <h2>Ejercicio 3</h2>
+
+        <?php
+
+        //10) Dado el array ["ana", "mesa", "radar","seres","folio","sudoku","amor a roma", "sol", "mar", "oso", "salas"], comprueba si todos son palíndromos
+
+
+        foreach ($arrayString as $cadena) {
+            $length = strlen($cadena);
+            $palabraReves = "";
+
+            for ($j = $length - 1; $j >= 0; $j--) {
+                $palabraReves .=  $cadena[$j];
+            }
+            
+            if ($cadena !== $palabraReves) { 
+                echo "Todos no son palindromo"; 
+                break;
+            }
+        }
+
+        ?>
+
+        <h2>Ejercicio 4 y 5</h2>
+
+        <?php
+
+        //11) y 12 Dado el array ["ana", "mesa", "radar","seres","folio","sudoku","amor a roma", "sol", "mar", "oso", "salas"], comprueba en que posición está el primer palíndromo
+
+
+        for($i = 0; $i<$arrayString; $i++){
+            $cadena = $arrayString[$i];
+            $length = strlen($arrayString[$i]);
+            $palabraReves = "";
+
+            for ($j = $length - 1; $j >= 0; $j--) {
+                $palabraReves .= $cadena[$j];
+            }
+            
+            if ($cadena === $palabraReves) { 
+                echo "Se encuentra en la posicion $i y el palindromo es la palabra $cadena"; 
+                break;
+            }
+        }
+
+        ?>
+
+        <h2>Ejercicio 5</h2>
+
+        <?php
+
+        //13) Dado el array ["ana", "mesa", "radar","seres","folio","sudoku","amor a roma", "sol", "mar", "oso", "salas"], quédate sólo con los palíndromos
+
+        $arrayPalabrasPalindromos = [];
+        foreach ($arrayString as $palindromo) {
+            $length = strlen($palindromo);
+            $palindromoReves = "";
+        
+            for ($j = $length - 1; $j >= 0; $j--) {
+                $palindromoReves .= $palindromo[$j];
+            }
+        
+            if ($palindromo === $palindromoReves) {
+                array_push($arrayPalabrasPalindromos, $palindromo);
+            }
+        }
+
+        echo "Array de palabras palindromos ". implode(", ", $arrayPalabrasPalindromos);
+
+        ?>
+
+        <h2>Ejercicio 6</h2>
+
+        <?php
+
+        //Dado el array de números palíndromos, dame la concatenación de todos los elementos del array
+
+        $arrayNumerosPalindromos = [121, 123, 454, 567, 789];
+
+        $sumerosConcatenacion = implode("", $arrayNumerosPalindromos);
+
+        echo "Array de numeros palindromos ". implode(",", $arrayNumerosPalindromos);
+        ?>
+
+        <br>
+
+        <?php
+        echo "Concatenación de todos los números palindromos del array $sumerosConcatenacion";
+
+        ?>
+
+        <h1>Otros</h1>
+        <h2>Ejercicio 1</h2>
+
 </body>
 </html>
